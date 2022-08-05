@@ -494,7 +494,7 @@ export class AmazonOrderReportsApi {
 
     try {
       const csvStream = createReadStream(reportPath).pipe(
-        csv({
+        csv.parse({
           columns: (headers: Array<string>) =>
             headers.map((header) => camelcase(header.replace(/\W/g, ' '))),
         }),
